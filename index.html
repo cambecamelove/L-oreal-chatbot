@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="L'Oréal Paris Smart Beauty Advisor for personalized skincare, haircare, and makeup guidance."
+  >
+
+  <title>L'Oréal Paris | Smart Beauty Advisor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="page-shell">
+
+    <!-- Header -->
+    <header class="site-header">
+      <a href="#" class="brand" aria-label="L'Oréal Paris home">
+        <span class="brand-name">L'ORÉAL</span>
+        <span class="brand-location">PARIS</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="#advisor">Beauty Advisor</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- Hero -->
+      <section class="hero-section" aria-labelledby="hero-title">
+
+        <div class="hero-copy">
+          <p class="eyebrow">SMART ROUTINE &amp; PRODUCT ADVISOR</p>
+
+          <h1 id="hero-title">
+            Your beauty routine,
+            <span>personally refined.</span>
+          </h1>
+
+          <p class="hero-description">
+            Explore tailored guidance for skincare, haircare, and makeup
+            through a conversational L'Oréal Paris beauty experience.
+          </p>
+
+          <a class="primary-link" href="#advisor">
+            Start your consultation
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="gold-orbit gold-orbit-one"></div>
+          <div class="gold-orbit gold-orbit-two"></div>
+
+          <div class="product-silhouette">
+            <div class="bottle-cap"></div>
+            <div class="bottle-body">
+              <span>L'ORÉAL</span>
+              <small>PARIS</small>
+            </div>
+          </div>
+
+          <p class="hero-quote">
+            “Because you're worth it.”
+          </p>
+        </div>
+
+      </section>
+
+      <!-- Advisor -->
+      <section
+        class="advisor-section"
+        id="advisor"
+        aria-labelledby="advisor-heading"
+      >
+
+        <div class="section-heading">
+          <p class="eyebrow">PERSONALIZED BEAUTY GUIDANCE</p>
+          <h2 id="advisor-heading">Meet your Smart Beauty Advisor</h2>
+
+          <p>
+            Ask about L'Oréal skincare, haircare, makeup, beauty routines,
+            product categories, application order, or product selection.
+          </p>
+        </div>
+
+        <div class="advisor-layout">
+
+          <!-- Category panel -->
+          <aside class="category-panel">
+            <p class="panel-label">Explore by category</p>
+
+            <div class="category-list">
+              <button
+                class="category-button active"
+                type="button"
+                data-prompt="Help me build a simple skincare routine."
+              >
+                <span class="category-icon">01</span>
+
+                <span>
+                  <strong>Skincare</strong>
+                  <small>Hydration, texture and routines</small>
+                </span>
+              </button>
+
+              <button
+                class="category-button"
+                type="button"
+                data-prompt="What L'Oréal products could help damaged or dry hair?"
+              >
+                <span class="category-icon">02</span>
+
+                <span>
+                  <strong>Haircare</strong>
+                  <small>Repair, moisture and styling</small>
+                </span>
+              </button>
+
+              <button
+                class="category-button"
+                type="button"
+                data-prompt="Help me choose a natural-looking foundation."
+              >
+                <span class="category-icon">03</span>
+
+                <span>
+                  <strong>Makeup</strong>
+                  <small>Complexion, eyes and long wear</small>
+                </span>
+              </button>
+            </div>
+
+            <div class="advisor-note">
+              <span class="note-symbol">✦</span>
+
+              <p>
+                Recommendations are general beauty guidance. Patch-test new
+                skincare and consult a qualified professional for medical
+                concerns.
+              </p>
+            </div>
+          </aside>
+
+          <!-- Chatbot -->
+          <div class="chatbot-card">
+
+            <div class="chatbot-header">
+              <div>
+                <p class="chatbot-kicker">L'ORÉAL PARIS</p>
+                <h3>Smart Beauty Advisor</h3>
+              </div>
+
+              <div class="status">
+                <span class="status-dot"></span>
+                Online
+              </div>
+            </div>
+
+            <div
+              class="chat-messages"
+              id="chatMessages"
+              aria-live="polite"
+              aria-label="Chat conversation"
+            >
+              <article class="message-row assistant-row">
+                <div class="avatar assistant-avatar" aria-hidden="true">
+                  L
+                </div>
+
+                <div class="message-content">
+                  <p class="message-label">Beauty Advisor</p>
+
+                  <div class="message-bubble assistant-bubble">
+                    <p>
+                      Welcome to your L'Oréal Paris beauty consultation.
+                      Tell me about your skin, hair, makeup goals, or the
+                      routine you would like to create.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="quick-prompts" aria-label="Suggested questions">
+              <button
+                type="button"
+                data-prompt="I have dry skin. Help me create a routine."
+              >
+                Dry skin routine
+              </button>
+
+              <button
+                type="button"
+                data-prompt="What should I use for damaged hair?"
+              >
+                Damaged hair
+              </button>
+
+              <button
+                type="button"
+                data-prompt="How do I choose a foundation shade and undertone?"
+              >
+                Foundation help
+              </button>
+            </div>
+
+            <form class="chat-form" id="chatForm">
+
+              <label class="sr-only" for="userInput">
+                Ask the L'Oréal Beauty Advisor a question
+              </label>
+
+              <textarea
+                id="userInput"
+                name="userInput"
+                rows="1"
+                maxlength="500"
+                placeholder="Ask about a L'Oréal product or beauty routine..."
+                required
+              ></textarea>
+
+              <button
+                class="send-button"
+                type="submit"
+                aria-label="Send message"
+              >
+                <span>Send</span>
+                <span aria-hidden="true">→</span>
+              </button>
+
+            </form>
+
+            <div class="chat-footer">
+              <p id="characterCount">0 / 500</p>
+
+              <button id="clearChatButton" type="button">
+                Clear conversation
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="about-section" id="about">
+        <p class="eyebrow">THE EXPERIENCE</p>
+
+        <h2>Beauty guidance designed around you.</h2>
+
+        <div class="benefit-grid">
+
+          <article>
+            <span>01</span>
+            <h3>Personalized</h3>
+            <p>
+              Recommendations adapt to the concerns, goals, and preferences
+              you share during the conversation.
+            </p>
+          </article>
+
+          <article>
+            <span>02</span>
+            <h3>Focused</h3>
+            <p>
+              The advisor stays centered on L'Oréal products, beauty
+              education, application techniques, and routines.
+            </p>
+          </article>
+
+          <article>
+            <span>03</span>
+            <h3>Conversational</h3>
+            <p>
+              Previous details are remembered so follow-up questions feel
+              connected and relevant.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span class="brand-name">L'ORÉAL</span>
+        <span class="brand-location">PARIS</span>
+      </div>
+
+      <p>
+        Student educational project. Product availability and selections may
+        vary.
+      </p>
+
+      <div class="footer-links">
+        <a href="#advisor">Beauty Advisor</a>
+        <a href="#about">About</a>
+      </div>
+
+      <p class="copyright">
+        © 2026 L'Oréal-inspired student project. All rights reserved.
+      </p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
