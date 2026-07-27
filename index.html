@@ -10,10 +10,10 @@
 
   <meta
     name="description"
-    content="L'Oréal Paris Smart Beauty Advisor for personalized skincare, haircare, and makeup guidance."
+    content="Build a personalized L'Oréal Paris beauty routine using selected skincare, haircare, and makeup products."
   >
 
-  <title>L'Oréal Paris | Smart Beauty Advisor</title>
+  <title>L'Oréal Paris | Product-Aware Routine Builder</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,295 +32,576 @@
 
     <!-- Header -->
     <header class="site-header">
+
       <a href="#" class="brand" aria-label="L'Oréal Paris home">
         <span class="brand-name">L'ORÉAL</span>
         <span class="brand-location">PARIS</span>
       </a>
 
-      <nav class="header-nav" aria-label="Primary navigation">
-        <a href="#advisor">Beauty Advisor</a>
-        <a href="#about">About</a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="#products">Products</a>
+        <a href="#routine">Routine Builder</a>
+        <a href="#advisor">Ask AI</a>
       </nav>
+
     </header>
 
     <main>
 
       <!-- Hero -->
-      <section class="hero-section" aria-labelledby="hero-title">
+      <section class="hero-section">
 
         <div class="hero-copy">
-          <p class="eyebrow">SMART ROUTINE &amp; PRODUCT ADVISOR</p>
 
-          <h1 id="hero-title">
-            Your beauty routine,
-            <span>personally refined.</span>
+          <p class="eyebrow">PRODUCT-AWARE BEAUTY EXPERIENCE</p>
+
+          <h1>
+            Build a routine
+            <span>designed for you.</span>
           </h1>
 
           <p class="hero-description">
-            Explore tailored guidance for skincare, haircare, and makeup
-            through a conversational L'Oréal Paris beauty experience.
+            Browse L'Oréal Paris products, select the items that match your
+            goals, and generate a tailored routine through an AI-powered
+            beauty consultation.
           </p>
 
-          <a class="primary-link" href="#advisor">
-            Start your consultation
-            <span aria-hidden="true">→</span>
-          </a>
+          <div class="hero-actions">
+
+            <a class="primary-button" href="#products">
+              Browse products
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <a class="secondary-link" href="#advisor">
+              Ask the advisor
+            </a>
+
+          </div>
+
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <div class="gold-orbit gold-orbit-one"></div>
-          <div class="gold-orbit gold-orbit-two"></div>
 
-          <div class="product-silhouette">
-            <div class="bottle-cap"></div>
-            <div class="bottle-body">
-              <span>L'ORÉAL</span>
-              <small>PARIS</small>
+          <div class="hero-circle hero-circle-one"></div>
+          <div class="hero-circle hero-circle-two"></div>
+
+          <div class="hero-products">
+
+            <div class="hero-product hero-product-left">
+              <div class="hero-product-cap"></div>
+
+              <div class="hero-product-body">
+                <span>REVITALIFT</span>
+                <small>HYALURONIC SERUM</small>
+              </div>
             </div>
+
+            <div class="hero-product hero-product-center">
+              <div class="hero-product-cap"></div>
+
+              <div class="hero-product-body">
+                <span>L'ORÉAL</span>
+                <small>PARIS</small>
+              </div>
+            </div>
+
+            <div class="hero-product hero-product-right">
+              <div class="hero-product-cap"></div>
+
+              <div class="hero-product-body">
+                <span>TRUE MATCH</span>
+                <small>FOUNDATION</small>
+              </div>
+            </div>
+
           </div>
 
-          <p class="hero-quote">
-            “Because you're worth it.”
-          </p>
+          <p class="hero-quote">“Because you're worth it.”</p>
+
         </div>
 
       </section>
 
-      <!-- Advisor -->
-      <section
-        class="advisor-section"
-        id="advisor"
-        aria-labelledby="advisor-heading"
-      >
+      <!-- Product browser -->
+      <section class="products-section" id="products">
 
         <div class="section-heading">
-          <p class="eyebrow">PERSONALIZED BEAUTY GUIDANCE</p>
-          <h2 id="advisor-heading">Meet your Smart Beauty Advisor</h2>
+
+          <p class="eyebrow">EXPLORE THE COLLECTION</p>
+
+          <h2>Select products for your routine</h2>
 
           <p>
-            Ask about L'Oréal skincare, haircare, makeup, beauty routines,
-            product categories, application order, or product selection.
+            Search or filter the catalog, then select up to six products.
+            Your choices will be used by the AI Routine Builder.
+          </p>
+
+        </div>
+
+        <div class="catalog-toolbar">
+
+          <div class="search-wrapper">
+
+            <label class="sr-only" for="productSearch">
+              Search products
+            </label>
+
+            <span class="search-icon" aria-hidden="true">⌕</span>
+
+            <input
+              id="productSearch"
+              type="search"
+              placeholder="Search by product, concern, category, or ingredient..."
+              autocomplete="off"
+            >
+
+          </div>
+
+          <div class="filter-wrapper">
+
+            <label class="sr-only" for="categoryFilter">
+              Filter product category
+            </label>
+
+            <select id="categoryFilter">
+              <option value="all">All categories</option>
+              <option value="skincare">Skincare</option>
+              <option value="haircare">Haircare</option>
+              <option value="makeup">Makeup</option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="catalog-summary">
+
+          <p id="productResultCount">Showing all products</p>
+
+          <button id="clearFiltersButton" type="button">
+            Clear filters
+          </button>
+
+        </div>
+
+        <div
+          class="product-grid"
+          id="productGrid"
+          aria-live="polite"
+        ></div>
+
+        <div
+          class="empty-products hidden"
+          id="emptyProducts"
+        >
+          <h3>No products found</h3>
+
+          <p>
+            Try another search term or choose a different category.
           </p>
         </div>
 
-        <div class="advisor-layout">
+      </section>
 
-          <!-- Category panel -->
-          <aside class="category-panel">
-            <p class="panel-label">Explore by category</p>
+      <!-- Routine builder -->
+      <section class="routine-section" id="routine">
 
-            <div class="category-list">
-              <button
-                class="category-button active"
-                type="button"
-                data-prompt="Help me build a simple skincare routine."
-              >
-                <span class="category-icon">01</span>
+        <div class="routine-shell">
 
-                <span>
-                  <strong>Skincare</strong>
-                  <small>Hydration, texture and routines</small>
-                </span>
-              </button>
+          <div class="routine-heading">
 
-              <button
-                class="category-button"
-                type="button"
-                data-prompt="What L'Oréal products could help damaged or dry hair?"
-              >
-                <span class="category-icon">02</span>
+            <div>
 
-                <span>
-                  <strong>Haircare</strong>
-                  <small>Repair, moisture and styling</small>
-                </span>
-              </button>
+              <p class="eyebrow">YOUR SELECTED PRODUCTS</p>
 
-              <button
-                class="category-button"
-                type="button"
-                data-prompt="Help me choose a natural-looking foundation."
-              >
-                <span class="category-icon">03</span>
-
-                <span>
-                  <strong>Makeup</strong>
-                  <small>Complexion, eyes and long wear</small>
-                </span>
-              </button>
-            </div>
-
-            <div class="advisor-note">
-              <span class="note-symbol">✦</span>
+              <h2>Build your routine</h2>
 
               <p>
-                Recommendations are general beauty guidance. Patch-test new
-                skincare and consult a qualified professional for medical
-                concerns.
+                Add products from the catalog, describe your goal, and let
+                the beauty advisor organize them into a clear routine.
               </p>
-            </div>
-          </aside>
 
-          <!-- Chatbot -->
-          <div class="chatbot-card">
-
-            <div class="chatbot-header">
-              <div>
-                <p class="chatbot-kicker">L'ORÉAL PARIS</p>
-                <h3>Smart Beauty Advisor</h3>
-              </div>
-
-              <div class="status">
-                <span class="status-dot"></span>
-                Online
-              </div>
             </div>
 
-            <div
-              class="chat-messages"
-              id="chatMessages"
-              aria-live="polite"
-              aria-label="Chat conversation"
-            >
-              <article class="message-row assistant-row">
-                <div class="avatar assistant-avatar" aria-hidden="true">
-                  L
-                </div>
+            <div class="selection-count">
 
-                <div class="message-content">
-                  <p class="message-label">Beauty Advisor</p>
+              <strong id="selectedCount">0</strong>
 
-                  <div class="message-bubble assistant-bubble">
-                    <p>
-                      Welcome to your L'Oréal Paris beauty consultation.
-                      Tell me about your skin, hair, makeup goals, or the
-                      routine you would like to create.
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </div>
+              <span>of 6 selected</span>
 
-            <div class="quick-prompts" aria-label="Suggested questions">
-              <button
-                type="button"
-                data-prompt="I have dry skin. Help me create a routine."
-              >
-                Dry skin routine
-              </button>
-
-              <button
-                type="button"
-                data-prompt="What should I use for damaged hair?"
-              >
-                Damaged hair
-              </button>
-
-              <button
-                type="button"
-                data-prompt="How do I choose a foundation shade and undertone?"
-              >
-                Foundation help
-              </button>
-            </div>
-
-            <form class="chat-form" id="chatForm">
-
-              <label class="sr-only" for="userInput">
-                Ask the L'Oréal Beauty Advisor a question
-              </label>
-
-              <textarea
-                id="userInput"
-                name="userInput"
-                rows="1"
-                maxlength="500"
-                placeholder="Ask about a L'Oréal product or beauty routine..."
-                required
-              ></textarea>
-
-              <button
-                class="send-button"
-                type="submit"
-                aria-label="Send message"
-              >
-                <span>Send</span>
-                <span aria-hidden="true">→</span>
-              </button>
-
-            </form>
-
-            <div class="chat-footer">
-              <p id="characterCount">0 / 500</p>
-
-              <button id="clearChatButton" type="button">
-                Clear conversation
-              </button>
             </div>
 
           </div>
+
+          <div class="selected-products" id="selectedProducts">
+
+            <div class="empty-selection" id="emptySelection">
+
+              <span aria-hidden="true">＋</span>
+
+              <p>
+                Select products from the catalog to begin building your
+                routine.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="routine-preferences">
+
+            <div class="preference-field">
+
+              <label for="routineGoal">Primary beauty goal</label>
+
+              <select id="routineGoal">
+                <option value="general routine">
+                  Create a balanced routine
+                </option>
+
+                <option value="hydration and moisture">
+                  Hydration and moisture
+                </option>
+
+                <option value="smoother-looking texture and radiance">
+                  Texture and radiance
+                </option>
+
+                <option value="visible signs of hair damage">
+                  Hair repair
+                </option>
+
+                <option value="a natural everyday makeup look">
+                  Everyday makeup
+                </option>
+
+                <option value="a long-wearing makeup look">
+                  Long-wearing makeup
+                </option>
+              </select>
+
+            </div>
+
+            <div class="preference-field">
+
+              <label for="routineTime">Routine timing</label>
+
+              <select id="routineTime">
+                <option value="complete morning and evening routine">
+                  Complete routine
+                </option>
+
+                <option value="morning routine">
+                  Morning
+                </option>
+
+                <option value="evening routine">
+                  Evening
+                </option>
+
+                <option value="hair wash day routine">
+                  Hair wash day
+                </option>
+
+                <option value="makeup application routine">
+                  Makeup application
+                </option>
+              </select>
+
+            </div>
+
+          </div>
+
+          <div class="custom-concern-field">
+
+            <label for="customConcern">
+              Tell the advisor anything else it should know
+            </label>
+
+            <textarea
+              id="customConcern"
+              rows="3"
+              maxlength="500"
+              placeholder="Example: My skin is dry and sensitive, and I prefer a simple morning routine."
+            ></textarea>
+
+          </div>
+
+          <div class="routine-actions">
+
+            <button
+              class="generate-button"
+              id="generateRoutineButton"
+              type="button"
+              disabled
+            >
+              <span aria-hidden="true">✦</span>
+              Generate AI routine
+            </button>
+
+            <button
+              class="clear-selection-button"
+              id="clearSelectionButton"
+              type="button"
+              disabled
+            >
+              Clear selections
+            </button>
+
+          </div>
+
+          <div
+            class="routine-output"
+            id="routineOutput"
+            aria-live="polite"
+          >
+
+            <div class="routine-placeholder" id="routinePlaceholder">
+
+              <span aria-hidden="true">L</span>
+
+              <div>
+
+                <h3>About your routine</h3>
+
+                <p>
+                  Your personalized product order and application guidance
+                  will appear here.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
+
       </section>
 
-      <!-- About -->
-      <section class="about-section" id="about">
-        <p class="eyebrow">THE EXPERIENCE</p>
+      <!-- AI conversation -->
+      <section class="advisor-section" id="advisor">
 
-        <h2>Beauty guidance designed around you.</h2>
+        <div class="section-heading">
+
+          <p class="eyebrow">CONTINUE THE CONVERSATION</p>
+
+          <h2>Ask about your routine</h2>
+
+          <p>
+            Ask follow-up questions about selected products, ingredients,
+            application order, or beauty goals.
+          </p>
+
+        </div>
+
+        <div class="chatbot-card">
+
+          <div class="chatbot-header">
+
+            <div>
+
+              <p class="chatbot-kicker">L'ORÉAL PARIS</p>
+
+              <h3>Product-Aware Beauty Advisor</h3>
+
+            </div>
+
+            <div class="status">
+
+              <span class="status-dot"></span>
+
+              AI connected
+
+            </div>
+
+          </div>
+
+          <div
+            class="chat-messages"
+            id="chatMessages"
+            aria-live="polite"
+            aria-label="Conversation with beauty advisor"
+          >
+
+            <article class="message-row assistant-row">
+
+              <div
+                class="avatar assistant-avatar"
+                aria-hidden="true"
+              >
+                L
+              </div>
+
+              <div class="message-content">
+
+                <p class="message-label">Beauty Advisor</p>
+
+                <div class="message-bubble assistant-bubble">
+
+                  <p>
+                    Welcome to the L'Oréal Paris Product-Aware Routine
+                    Builder. Select products above to generate a routine, or
+                    ask me a question about skincare, haircare, or makeup.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          </div>
+
+          <div class="quick-prompts">
+
+            <button
+              type="button"
+              data-prompt="Explain how I should layer the products I selected."
+            >
+              Layer my products
+            </button>
+
+            <button
+              type="button"
+              data-prompt="Which of my selected products should I use in the morning?"
+            >
+              Morning products
+            </button>
+
+            <button
+              type="button"
+              data-prompt="Are any of my selected products better suited for evening use?"
+            >
+              Evening products
+            </button>
+
+          </div>
+
+          <form class="chat-form" id="chatForm">
+
+            <label class="sr-only" for="userInput">
+              Ask about your selected products or routine
+            </label>
+
+            <textarea
+              id="userInput"
+              rows="1"
+              maxlength="500"
+              placeholder="Ask about your selected products or routine..."
+              required
+            ></textarea>
+
+            <button
+              class="send-button"
+              type="submit"
+              aria-label="Send message"
+            >
+              <span>Send</span>
+              <span aria-hidden="true">→</span>
+            </button>
+
+          </form>
+
+          <div class="chat-footer">
+
+            <p id="characterCount">0 / 500</p>
+
+            <button id="clearChatButton" type="button">
+              Clear conversation
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Features -->
+      <section class="about-section">
+
+        <p class="eyebrow">HOW IT WORKS</p>
+
+        <h2>A smarter way to explore beauty products.</h2>
 
         <div class="benefit-grid">
 
           <article>
+
             <span>01</span>
-            <h3>Personalized</h3>
+
+            <h3>Browse</h3>
+
             <p>
-              Recommendations adapt to the concerns, goals, and preferences
-              you share during the conversation.
+              Search and filter a product catalog organized by skincare,
+              haircare, and makeup.
             </p>
+
           </article>
 
           <article>
+
             <span>02</span>
-            <h3>Focused</h3>
+
+            <h3>Select</h3>
+
             <p>
-              The advisor stays centered on L'Oréal products, beauty
-              education, application techniques, and routines.
+              Choose the products most relevant to your concerns and desired
+              beauty results.
             </p>
+
           </article>
 
           <article>
+
             <span>03</span>
-            <h3>Conversational</h3>
+
+            <h3>Generate</h3>
+
             <p>
-              Previous details are remembered so follow-up questions feel
-              connected and relevant.
+              Use AI to turn your product selections into a personalized,
+              ordered routine.
             </p>
+
           </article>
 
         </div>
+
       </section>
 
     </main>
 
     <footer class="site-footer">
+
       <div class="footer-brand">
+
         <span class="brand-name">L'ORÉAL</span>
+
         <span class="brand-location">PARIS</span>
+
       </div>
 
       <p>
-        Student educational project. Product availability and selections may
-        vary.
+        Student educational project. Product availability and instructions
+        may vary. Always follow product packaging and patch-test when
+        appropriate.
       </p>
 
       <div class="footer-links">
-        <a href="#advisor">Beauty Advisor</a>
-        <a href="#about">About</a>
+
+        <a href="#products">Products</a>
+
+        <a href="#routine">Routine Builder</a>
+
+        <a href="#advisor">Ask AI</a>
+
       </div>
 
       <p class="copyright">
-        © 2026 L'Oréal-inspired student project. All rights reserved.
+        © 2026 L'Oréal Paris Product-Aware Routine Builder.
       </p>
+
     </footer>
 
   </div>
